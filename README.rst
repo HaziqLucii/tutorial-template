@@ -1,9 +1,5 @@
-Template for the Read the Docs tutorial
-=======================================
+nak run : docker compose up -d
 
-This GitHub template includes fictional Python library
-with some basic Sphinx docs.
+nak ubah docs, semua ada dalam docs/source. file rst adalah file yang perlu diubah / tambah.  
 
-Read the tutorial here:
-
-https://docs.readthedocs.io/en/stable/tutorial/
+docs generator : sphinx
