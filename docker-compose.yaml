@@ -4,5 +4,15 @@ services:
     volumes:
       - .:/docs
     ports:
-      - "8000:8000"
-    command: bash -c "while inotifywait -r -e modify,create,delete,move docs/source; do sphinx-build -b html docs/source docs/build; done & python -m http.server 8000 -d docs/build"
+      - 8000:8000
+    command: bash -c "sphinx-build -b html docs/source docs/build; while inotifywait -r -e modify,create,delete,move docs/source; do sphinx-build -b html docs/source docs/build; done & python -m http.server 8000 -d docs/build"
+
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./docs/build:/usr/share/nginx/html:ro
+    ports:
+      - 80:80
+    depends_on:
+      - docs

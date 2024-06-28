@@ -4,13 +4,16 @@ FROM python:3.9-slim
 WORKDIR /docs
 
 # Install dependencies
-RUN apt-get update && apt-get install -y inotify-tools
-RUN pip install sphinx sphinx_rtd_theme recommonmark
+RUN apt-get update && apt-get install -y inotify-tools && \
+    pip install sphinx sphinx_rtd_theme recommonmark && \
+    useradd -m plisca && \
+    chown -R plisca .
+
+USER plisca
 
 # Copy the current directory contents into the container at /docs
 COPY . /docs
 
-# Expose the port to view the docs
 EXPOSE 8000
 
 # Default command to build and serve the documentation
