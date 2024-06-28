@@ -1,4 +1,4 @@
-Welcome to Haziq's documentation!
+Welcome to test's documentation!
 ===================================
 
 **Lumache** (/lu'make/) is a Python library for cooks and food lovers

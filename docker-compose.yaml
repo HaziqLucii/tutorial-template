@@ -1,0 +1,8 @@
+services:
+  docs:
+    build: .
+    volumes:
+      - .:/docs
+    ports:
+      - "8000:8000"
+    command: bash -c "while inotifywait -r -e modify,create,delete,move docs/source; do sphinx-build -b html docs/source docs/build; done & python -m http.server 8000 -d docs/build"
