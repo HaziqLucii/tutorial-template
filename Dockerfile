@@ -14,7 +14,5 @@ USER plisca
 # Copy the current directory contents into the container at /docs
 COPY . /docs
 
-EXPOSE 8000
-
 # Default command to build and serve the documentation
 CMD ["bash", "-c", "sphinx-build -b html docs/source docs/build && python -m http.server 8000 -d docs/build"]
