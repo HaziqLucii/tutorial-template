@@ -1,4 +1,5 @@
 command (boleh rujuk Makefile) : 
+ - make build
  - make up
  - make down
 
